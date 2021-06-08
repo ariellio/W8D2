@@ -37,5 +37,5 @@ Array.prototype.transpose = function() {
     return res
 }
 
-arr = [[1,2,3], [7,8,9], [10,11,12]]
+arr = [[1,2,3], [7,8,9], [10,11,12], [4,5,6]]
 console.log(arr.transpose());
