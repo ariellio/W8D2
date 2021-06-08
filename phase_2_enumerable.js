@@ -30,17 +30,29 @@ Array.prototype.myMap = function(callback) {
 
 // console.log(arr.myMap(timesTwo));
 
-Array.prototype.inject(callback, initialValue) {
-    let value = 0
-
+Array.prototype.myReduce = function(callback, initialValue){
     if (!initialValue) {
         initialValue = this[0]
         this.slice(1).myEach (
             function(n) {
-                
+                initialValue = callback(initialValue, n)
+            }
+        )
+    } else {
+        this.myEach (
+            function(n) {
+                initialValue = callback(initialValue, n)
             }
         )
     }
-
-
+    return initialValue
 }
+
+console.log([1, 2, 3].myReduce(function(acc, el) {
+  return acc + el;
+})); // => 6
+
+// with initialValue
+console.log([1, 2, 3].myReduce(function(acc, el) {
+  return acc + el;
+}, 25)); // => 31
